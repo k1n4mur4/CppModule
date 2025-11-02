@@ -1,4 +1,4 @@
-NAME		=	horde
+NAME		=	zombiehorde
 
 # commands
 CC			=	c++
