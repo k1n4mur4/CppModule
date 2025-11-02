@@ -1,4 +1,4 @@
-NAME		=	megaphone
+NAME		=	test
 
 # commands
 CC			=	c++
@@ -8,8 +8,11 @@ RM			=	rm -rf
 MAKEFLAGS	+=	--no-print-directory
 
 # Files
-SRCS		=	megaphone.cpp
+SRCS		=	tests.cpp Account.cpp
 OBJS		=	${SRCS:.cpp=.o}
+
+# Includes
+INCLUDES	=	Account.hpp
 
 # Colors
 RESET		=	\033[0m
