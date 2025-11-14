@@ -1,4 +1,6 @@
-#pragma once
+#ifndef	WEAPON_HPP
+#define WEAPON_HPP
+
 
 #include <iostream>
 #include <string>
@@ -17,3 +19,5 @@ class Weapon {
 		// Setter
 		void			setType(const std::string &weapon);
 };
+
+#endif
