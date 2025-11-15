@@ -2,7 +2,7 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
-#include <string.h>
+#include <string>
 
 class Zombie {
 	private:

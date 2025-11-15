@@ -1,6 +1,8 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <fstream>
+#include <cstdlib>
+#include <cstdio>
 
 std::string	ft_replace(std::string buffer, const std::string old_value, const std::string new_value) {
 	size_t	old_length = old_value.length();
@@ -25,6 +27,10 @@ int	main(int argc, char **argv) {
 	const std::string	s1 = argv[2];
 	const std::string	s2 = argv[3];
 
+	if (s1.empty()) {
+		std::cout << "Invalid arguments" << std::endl;
+		return EXIT_FAILURE;
+	}
 	std::string		buf;
 	std::ifstream	infile;
 	std::ofstream	outfile;
