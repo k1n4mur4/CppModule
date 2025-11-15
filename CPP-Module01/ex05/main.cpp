@@ -1,36 +1,33 @@
 #include "Harl.hpp"
 
-int	main(void) {
-	Harl	harl;
-
-	std::cout << "" << std::endl;
-	harl.complain("ERROR");
+int main() {
+	Harl harl;
+		
+	std::cout << "========================================" << std::endl;
+	std::cout << "      Harl 2.0 - Complaint System" << std::endl;
+	std::cout << "========================================" << std::endl;
 	std::cout << std::endl;
 
-	harl.complain("WARNING");
-	std::cout << std::endl;
+	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	harl.complain("INFO");
-	std::cout << std::endl;
-
-	harl.complain("DEBUG");
-	std::cout << std::endl;
-
-	harl.complain("something else");
-	std::cout << std::endl;
-
-	std::cout << "Now you have 5 chances to make harl say something." << std::endl;
-
-	for (int i = 0; i < 5; i++) {
-		std::cout << "input: ";
-		std::string	input;
-		std::getline(std::cin, input);
-		if (std::cin.eof() == true) {
-			std::cerr << "^D" << std::endl;
-			return 1;
-		}
-		harl.complain(input);
+	for (int i = 0; i < 4; i++) {
+		std::cout << "Level: " << levels[i] << std::endl;
+		std::cout << "----------------------------------------" << std::endl;
+		harl.complain(levels[i]);
 		std::cout << std::endl;
 	}
+
+	std::cout << "Testing invalid level:" << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
+	harl.complain("INVALID");
+	std::cout << "(No output expected for invalid level)" << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "Multiple complaints:" << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
+	harl.complain("ERROR");
+	harl.complain("ERROR");
+	harl.complain("WARNING");
+
 	return 0;
 }
