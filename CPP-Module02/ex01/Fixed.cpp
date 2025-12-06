@@ -4,16 +4,19 @@ Fixed::Fixed() : _fixedPointValue(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(int const n) : _fixedPointValue(n << _fractionalBits) {
+Fixed::Fixed(const int n) {
 	std::cout << "Int constructor called" << std::endl;
+	this->_fixedPointValue = n << _fractionalBits;
 }
 
-Fixed::Fixed(float const f) : _fixedPointValue(roundf(f * (1 << _fractionalBits))) {
+Fixed::Fixed(const float f) {
 	std::cout << "Float constructor called" << std::endl;
+	this->_fixedPointValue = roundf(f * (1 << _fractionalBits));
 }
 
-Fixed::Fixed(const Fixed& other) : _fixedPointValue(other.getRawBits()) {
+Fixed::Fixed(const Fixed& other) : _fixedPointValue(0) {
 	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed& other) {
@@ -29,11 +32,11 @@ Fixed::~Fixed(){
 }
 
 float	Fixed::toFloat( void ) const {
-	return (float)_fixedPointValue / (1 << _fractionalBits);
+	return static_cast<float>(_fixedPointValue) / (1 << _fractionalBits);
 }
 
 int		Fixed::toInt( void ) const {
-	return _fixedPointValue >> _fractionalBits;
+	return this->_fixedPointValue >> _fractionalBits;
 }
 
 int	Fixed::getRawBits( void ) const {
