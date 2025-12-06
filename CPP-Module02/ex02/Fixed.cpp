@@ -85,14 +85,14 @@ Fixed Fixed::operator-(const Fixed &other) const {
 
 Fixed Fixed::operator*(const Fixed &other) const {
 	Fixed result;
-	result.setRawBits((_fixedPointValue * other._fixedPointValue) >> _fractionalBits);
+	long long temp = (long long)this->_fixedPointValue * (long long)other._fixedPointValue;
+	result.setRawBits((int)(temp>> _fractionalBits));
 	return result;
 }
 
 Fixed Fixed::operator/(const Fixed &other) const {
 	Fixed result;
-	long long temp = (long long)this->_fixedPointValue * (long long)other._fixedPointValue;
-	result.setRawBits((int)(temp>> _fractionalBits));
+	result.setRawBits((_fixedPointValue / other._fixedPointValue) >> _fractionalBits);
 	return result;
 }
 
