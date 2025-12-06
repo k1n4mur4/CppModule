@@ -1,8 +1,8 @@
 NAME		=	a.out
 
 # commands
-CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror
+CXX			=	c++
+CXXFLAGS		=	-Wall -Wextra -Werror
 VFLAGS		=	-std=c++98 -pedantic
 RM			=	rm -rf
 MAKEFLAGS	+=	--no-print-directory
@@ -25,7 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@printf "\033[K$(BOLD)$(LIGHT_BLUE)Compiling $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(VFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(VFLAGS) $(OBJS) -o $(NAME)
 	@printf "\r\033[K$(BOLD)$(LIGHT_BLUE)$(NAME) created successfully!$(RESET)\n"
 
 clean:
