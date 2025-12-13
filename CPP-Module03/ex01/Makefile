@@ -9,6 +9,7 @@ MAKEFLAGS	+=	--no-print-directory
 
 # Files
 SRCS		=	ClapTrap.cpp \
+				ScavTrap.cpp \
 				main.cpp
 OBJS		=	${SRCS:.cpp=.o}
 
