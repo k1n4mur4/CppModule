@@ -38,7 +38,7 @@ bool turnChange(ClapTrap &attacker, ClapTrap &defender) {
 			attacker.beRepaired(3);
 			break;
 
-		case 3:  // ★ここ！
+		case 3:
 			std::cout << attacker.getName() << " ran away!" << std::endl;
 			return false;
 
