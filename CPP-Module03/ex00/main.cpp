@@ -23,29 +23,29 @@ int selecter_move( void ) {
 }
 
 bool turnChange(ClapTrap &attacker, ClapTrap &defender) {
-    std::cout << "\n=== " << attacker.getName() << "'s Turn ===" << std::endl;
-    std::cout << "Target: " << defender.getName() << " (HP: " << defender.getHitPoint() << ")" << std::endl;
+	std::cout << "\n=== " << attacker.getName() << "'s Turn ===" << std::endl;
+	std::cout << "Target: " << defender.getName() << " (HP: " << defender.getHitPoint() << ")" << std::endl;
 
-    int choice = selecter_move(); // 入力された数字を受け取る
+	int choice = selecter_move();
 
-    switch (choice) {
-        case 1:  // ★ここ！ "case 1:" がないと動きません
-            attacker.attack(defender.getName());
-            defender.takeDamage(2); // テスト用ダメージ
-            break;
-        
-        case 2:  // ★ここ！
-            attacker.beRepaired(3); // テスト用回復
-            break;
+	switch (choice) {
+		case 1:
+			attacker.attack(defender.getName());
+			defender.takeDamage(2);
+			break;
+		
+		case 2:
+			attacker.beRepaired(3);
+			break;
 
-        case 3:  // ★ここ！
-            std::cout << attacker.getName() << " ran away!" << std::endl;
-            return false; // ループを抜ける（逃げる）
+		case 3:  // ★ここ！
+			std::cout << attacker.getName() << " ran away!" << std::endl;
+			return false;
 
-        default:
-            return false; // 予期せぬ入力の場合も終了
-    }
-    return true; // 戦闘継続
+		default:
+			return false;
+	}
+	return true;
 }
 
 int main(void) {
