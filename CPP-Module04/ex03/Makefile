@@ -1,4 +1,4 @@
-NAME		=	brain
+NAME		=	interface
 
 # commands
 CXX			=	c++

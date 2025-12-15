@@ -1,4 +1,4 @@
-NAME		=	polymorphism
+NAME		=	brain
 
 # commands
 CXX			=	c++
@@ -11,8 +11,7 @@ MAKEFLAGS	+=	--no-print-directory
 SRCS		=	Animal.cpp \
 				Dog.cpp \
 				Cat.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp \
+				Brain.cpp \
 				main.cpp
 OBJS		=	${SRCS:.cpp=.o}
 
