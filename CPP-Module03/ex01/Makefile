@@ -1,4 +1,4 @@
-NAME		=	a.out
+NAME		=	scavtrap
 
 # commands
 CXX			=	c++
