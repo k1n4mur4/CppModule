@@ -20,7 +20,8 @@ AMateria::~AMateria() {
 }
 
 AMateria &AMateria::operator=(const AMateria &src) {
-	(void)src;
+	if (this != &src)
+		this->_type = src._type;
 	return *this;
 }
 
