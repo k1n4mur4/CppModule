@@ -48,7 +48,7 @@ void materiaSourceTest() {
 	std::cout << "[Test] Learning 5th Materia (Should be ignored)..." << std::endl;
 	AMateria* extra = new Ice();
 	src->learnMateria(extra); 
-	delete extra; 
+	// learnMateria 内で clone を保持するので extra は呼び出し側が解放する必要なし
 
 	std::cout << "[Test] Creating unknown Materia 'fire'..." << std::endl;
 	AMateria* unknown = src->createMateria("fire");
