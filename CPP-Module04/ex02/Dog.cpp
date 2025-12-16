@@ -34,3 +34,14 @@ Dog &Dog::operator=(const Dog &src) {
 	}
 	return *this;
 }
+
+void Dog::setIdea(int idx, const std::string& idea) {
+	if (this->_brain)
+		this->_brain->setIdea(idx, idea);
+}
+
+std::string Dog::getIdea(int idx) const {
+	if (this->_brain)
+		return this->_brain->getIdea(idx);
+	return "";
+}

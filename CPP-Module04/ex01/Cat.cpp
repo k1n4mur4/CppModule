@@ -34,3 +34,14 @@ Cat &Cat::operator=(const Cat &src) {
 	}
 	return *this;
 }
+
+void Cat::setIdea(int idx, const std::string& idea) {
+	if (this->_brain)
+		this->_brain->setIdea(idx, idea);
+}
+
+std::string Cat::getIdea(int idx) const {
+	if (this->_brain)
+		return this->_brain->getIdea(idx);
+	return "";
+}

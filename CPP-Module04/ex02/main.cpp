@@ -31,8 +31,12 @@ int main() {
 
 	std::cout << "\n--- 2. Deep Copy check ---" << std::endl;
 	Dog basic;
+	basic.setIdea(0, "Original idea");
 	{
 		Dog tmp = basic;
+		tmp.setIdea(0, "Tmp idea");
+		std::cout << "basic idea[0]: " << basic.getIdea(0) << std::endl;
+		std::cout << "tmp idea[0]: " << tmp.getIdea(0) << std::endl;
 	}
 
 	std::cout << "End of main" << std::endl;
