@@ -2,16 +2,19 @@
 #include "ICharacter.hpp"
 
 Ice::Ice() : AMateria("ice") {
+	std::cout << "Ice Constructor called" << std::endl;
 }
 
 Ice::Ice(const Ice &src) : AMateria(src) {
+	std::cout << "Ice Copy Constructor called" << std::endl;
 }
 
 Ice::~Ice() {
-
+	std::cout << "Ice Destructor called" << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &src) {
+	std::cout << "Ice Copy Assignment Operator called" << std::endl;
 	(void)src;
 	return *this;
 }

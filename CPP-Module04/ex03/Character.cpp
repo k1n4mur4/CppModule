@@ -1,12 +1,14 @@
 #include "Character.hpp"
 
 Character::Character(std::string const & name) : _name(name) {
+	std::cout << "Character Constructor called" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
 }
 
 Character::Character(const Character &src) : _name(src._name) {
+	std::cout << "Character Copy Constructor called" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		if (src._inventory[i])
 			this->_inventory[i] = src._inventory[i]->clone();
@@ -16,6 +18,7 @@ Character::Character(const Character &src) : _name(src._name) {
 }
 
 Character::~Character() {
+	std::cout << "Character Destructor called" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		if (this->_inventory[i])
 			delete this->_inventory[i];
@@ -23,6 +26,7 @@ Character::~Character() {
 }
 
 Character &Character::operator=(const Character &src) {
+	std::cout << "Character Copy Assignment Operator called" << std::endl;
 	if (this != &src) {
 		this->_name = src._name;
 
