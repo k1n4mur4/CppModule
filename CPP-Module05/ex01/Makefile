@@ -8,7 +8,7 @@ ifneq ($(QUIET),true)
 endif
 
 #? Compiler and Linker
-NAME			:=	bureaucrat
+NAME			:=	form
 CXX				:=	c++
 RM				:=	rm -rf
 
@@ -51,7 +51,8 @@ OBJEXT			:=	o
 
 #? Sources and Objects
 SOURCES			:=	$(SRCDIR)/main.cpp \
-					$(SRCDIR)/Bureaucrat.cpp
+					$(SRCDIR)/Bureaucrat.cpp \
+					$(SRCDIR)/Form.cpp
 
 OBJECTS			:=	$(patsubst $(SRCDIR)/%.$(SRCEXT),$(BUILDDIR)/%.$(OBJEXT),$(SOURCES))
 
