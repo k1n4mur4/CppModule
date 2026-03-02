@@ -6,7 +6,6 @@ Bureaucrat::Bureaucrat() : name_("default"), grade_(1) {
 
 Bureaucrat::~Bureaucrat() {
 	std::cout << "called Bureaucrat destractor." << std::endl;
-	return ;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name_(name), grade_(grade) {
