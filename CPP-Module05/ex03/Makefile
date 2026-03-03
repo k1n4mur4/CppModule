@@ -8,7 +8,7 @@ ifneq ($(QUIET),true)
 endif
 
 #? Compiler and Linker
-NAME			:=	bureaucrat
+NAME			:=	intern
 CXX				:=	c++
 RM				:=	rm -rf
 
@@ -27,10 +27,12 @@ ARCH		?= $(shell uname -m || echo unknown)
 
 ifeq ($(shell uname -s),Darwin)
 	PLATFORM		:=	macOS
-	THREADS			:=	$(shell sysctl -n hw.ncpu || echo 1)
+	THREADS			:=	1
+# 	THREADS			:=	$(shell sysctl -n hw.ncpu || echo 1)
 else
 	PLATFORM		:=	$(shell uname -s || echo unknown)
-	THREADS			:=	$(shell getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)
+	THREADS			:=	1
+# 	THREADS			:=	$(shell getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)
 endif
 
 #? Use all CPU cores
@@ -51,7 +53,13 @@ OBJEXT			:=	o
 
 #? Sources and Objects
 SOURCES			:=	$(SRCDIR)/main.cpp \
-					$(SRCDIR)/Bureaucrat.cpp
+					$(SRCDIR)/Bureaucrat.cpp \
+					$(SRCDIR)/AForm.cpp \
+					$(SRCDIR)/PresidentialPardonForm.cpp \
+					$(SRCDIR)/ShrubberyCreationForm.cpp \
+					$(SRCDIR)/RobotomyRequestForm.cpp \
+					$(SRCDIR)/Intern.cpp
+
 
 OBJECTS			:=	$(patsubst $(SRCDIR)/%.$(SRCEXT),$(BUILDDIR)/%.$(OBJEXT),$(SOURCES))
 
