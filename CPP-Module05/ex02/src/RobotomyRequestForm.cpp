@@ -2,12 +2,15 @@
 #include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotomyRequestForm", 72, 45), target_(target) {
+	std::cout << "RobotomyRequestForm parameterized constructor called: " << target_ << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
+	std::cout << "RobotomyRequestForm destructor called: " << target_ << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other), target_(other.target_){
+	std::cout << "RobotomyRequestForm copy constructor called: " << target_ << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {

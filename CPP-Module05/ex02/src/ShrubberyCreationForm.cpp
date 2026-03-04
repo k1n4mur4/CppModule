@@ -2,11 +2,15 @@
 #include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), target_(target){
+	std::cout << "ShrubberyCreationForm parameterized constructor called: " << target_ << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+	std::cout << "ShrubberyCreationForm destructor called: " << target_ << std::endl;
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other), target_(other.target_) {
+	std::cout << "ShrubberyCreationForm copy constructor called: " << target_ << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
