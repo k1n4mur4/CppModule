@@ -2,78 +2,55 @@
 #include "Form.hpp"
 
 int main() {
-
-	// Success
-	// Signed
+	// success
 	try {
-		std::cout << "=======Signed======" << std::endl;
-		Bureaucrat b("Signed", 50);
-		Form f("Signed", 75, 50);
+		Bureaucrat b("Alice", 50);
+		Form f("FormA", 75, 50);
 		std::cout << f << std::endl;
 		b.signForm(f);
 		std::cout << f << std::endl;
-		std::cout << "===================" << std::endl;
 	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// not Signed
+	// not signed
 	try {
-		std::cout << "=======Signed======" << std::endl;
-		Bureaucrat b("Bad", 100);
-		Form f("Bad", 75, 0);
+		Bureaucrat b("Bob", 100);
+		Form f("FormB", 75, 50);
 		std::cout << f << std::endl;
 		b.signForm(f);
 		std::cout << f << std::endl;
-		std::cout << "===================" << std::endl;
 	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
 	// Float
 	try {
-		std::cout << "========Float======" << std::endl;
 		Bureaucrat b("Float", 50.0);
-		Form f("Float", 75, 50.0);
+		Form f("FloatForm", 75.0, 50.0);
 		std::cout << f << std::endl;
 		b.signForm(f);
 		std::cout << f << std::endl;
-		std::cout << "===================" << std::endl;
 	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// Error
-	// High
+	// error
+	// high
 	try {
-		std::cout << "========high=======" << std::endl;
-		Bureaucrat b("High", 100);
-		Form f("High", 50, 50);
-		std::cout << f << std::endl;
-		b.signForm(f);
-		std::cout << f << std::endl;
-		std::cout << "===================" << std::endl;
+		Form f("High", 0, 50);
 	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
-
-	// Low
+	// low
 	try {
-		std::cout << "========Low=======" << std::endl;
-		Bureaucrat b("Low", 100);
-		// std::cout << "===================" << std::endl; /* write */
-		Form f("Low", 0, 50);
-		// std::cout << "===================" << std::endl; /* don't write */
-		std::cout << f << std::endl;
-		b.signForm(f);
-		std::cout << f << std::endl;
-		std::cout << "===================" << std::endl;
+		Form f("Low", 151, 50);
 	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 

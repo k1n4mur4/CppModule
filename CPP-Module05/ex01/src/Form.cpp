@@ -2,14 +2,15 @@
 #include "Bureaucrat.hpp"
 
 Form::Form(): name_("default"), isSign_(false), signGrade_(1), execGrade_(1) {
-	std::cout << "called Form constractor." << std::endl;
+	std::cout << "Form default constructor called: " << name_ << " sign grade " << signGrade_ << " exec grade " << execGrade_ << std::endl;
 }
 
 Form::~Form() {
-	std::cout << "called Form destractor." << std::endl;
+	std::cout << "Form destructor called: " << name_ << std::endl;
 }
 
 Form::Form(const std::string name, int signGrade, int execGrade): name_(name), isSign_(false), signGrade_(signGrade), execGrade_(execGrade) {
+	std::cout << "Form parameterized constructor called: " << name_ << " sign grade " << signGrade_ << " exec grade " << execGrade_ << std::endl;
 	if (signGrade < 1 || execGrade < 1)
 		throw GradeTooHighException();
 	if (signGrade > 150 || execGrade > 150)
@@ -17,6 +18,7 @@ Form::Form(const std::string name, int signGrade, int execGrade): name_(name), i
 }
 
 Form::Form(const Form &other) :name_(other.name_), isSign_(other.isSign_), signGrade_(other.signGrade_), execGrade_(other.execGrade_) {
+	std::cout << "Form copy constructor called: " << name_ << " sign grade " << signGrade_ << " exec grade " << execGrade_ << std::endl;
 }
 
 Form &Form::operator=(const Form &other) {
