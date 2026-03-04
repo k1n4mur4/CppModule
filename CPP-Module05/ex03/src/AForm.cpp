@@ -2,14 +2,15 @@
 #include "Bureaucrat.hpp"
 
 AForm::AForm(): name_("default"), isSign_(false), signGrade_(1), execGrade_(1) {
-	std::cout << "called AForm constractor." << std::endl;
+	std::cout << "AForm default constructor called: " << name_ << " sign grade " << signGrade_ << " exec grade " << execGrade_ << std::endl;
 }
 
 AForm::~AForm() {
-	std::cout << "called AForm destractor." << std::endl;
+	std::cout << "AForm destructor called: " << name_ << std::endl;
 }
 
 AForm::AForm(const std::string name, int signGrade, int execGrade): name_(name), isSign_(false), signGrade_(signGrade), execGrade_(execGrade) {
+	std::cout << "AForm parameterized constructor called: " << name_ << " sign grade " << signGrade_ << " exec grade " << execGrade_ << std::endl;
 	if (signGrade < 1 || execGrade < 1)
 		throw GradeTooHighException();
 	if (signGrade > 150 || execGrade > 150)
@@ -17,6 +18,7 @@ AForm::AForm(const std::string name, int signGrade, int execGrade): name_(name),
 }
 
 AForm::AForm(const AForm &other) :name_(other.name_), isSign_(other.isSign_), signGrade_(other.signGrade_), execGrade_(other.execGrade_) {
+	std::cout << "AForm copy constructor called: " << name_ << " sign grade " << signGrade_ << " exec grade " << execGrade_ << std::endl;
 }
 
 AForm &AForm::operator=(const AForm &other) {

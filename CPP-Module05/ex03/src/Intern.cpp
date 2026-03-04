@@ -27,13 +27,16 @@ FormEntry forms[] = {
 
 
 Intern::Intern(){
+	std::cout << "Intern default constructor called" << std::endl;
 }
 
 Intern::~Intern(){
+	std::cout << "Intern destructor called" << std::endl;
 }
 
 Intern::Intern(const Intern &other){
 	(void)other;
+	std::cout << "Intern copy constructor called" << std::endl;
 }
 
 Intern &Intern::operator=(const Intern &other){
