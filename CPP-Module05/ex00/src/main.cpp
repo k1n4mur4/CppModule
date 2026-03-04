@@ -15,9 +15,12 @@ int main() {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	// float
+	// Float
 	try {
-		Bureaucrat b("float", 1.0);
+		Bureaucrat b("Float", 2.0);
+		b.incrementGrade();
+		std::cout << b << std::endl;
+		b.decrementGrade();
 		std::cout << b << std::endl;
 	}
 	catch (std::exception &e) {
