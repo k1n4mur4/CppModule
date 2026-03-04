@@ -72,7 +72,7 @@ else
 endif
 
 #? Default Make
-all: | info directories $(TARGETDIR)/$(NAME)
+all: | info $(TARGETDIR)/$(NAME)
 	@END=$$(date +%s 2>/dev/null || echo "0"); \
 	ELAPSED=$$((END - $(TIMESTAMP))); \
 	MINS=$$((ELAPSED / 60)); \
@@ -114,25 +114,22 @@ help:
 	@printf "  \033[1minfo\033[0m         Display build information\n"
 	@printf "  \033[1mhelp\033[0m         Show this help message\n"
 
-#? Make the Directories
-directories:
-	@$(VERBOSE) || printf "mkdir -p $(TARGETDIR) $(BUILDDIR)\n"
-	@mkdir -p $(TARGETDIR) $(BUILDDIR)
-	@echo 0 > $(BUILDDIR)/.progress_count
-
 #? Link
-$(TARGETDIR)/$(NAME): $(OBJECTS) | directories
+$(TARGETDIR)/$(NAME): $(OBJECTS)
+	@mkdir -p $(TARGETDIR)
 	@$(QUIET) || printf "\033[1;92mLinking and creating binary\033[37m...\033[0m\n"; \
 	$(VERBOSE) || printf "$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^\n"; \
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ || exit 1; \
 	printf "\033[1;92m100$(P) -> \033[1;37m$@ \033[1;93m(\033[1;97m$$(du -h $@ | cut -f1)\033[1;93m)\033[0m\n"
 
 #? Compile
-$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT) | directories
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(BUILDDIR)
 	@$(QUIET) || printf "\033[1;97mCompiling $<\033[0m\n"; \
 	$(VERBOSE) || printf "$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<\n"; \
 	$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $< || exit 1; \
 	while ! mkdir $(BUILDDIR)/.progress_lock 2>/dev/null; do sleep 0.01; done; \
+	[ -f $(BUILDDIR)/.progress_count ] || echo 0 > $(BUILDDIR)/.progress_count; \
 	PROGRESS=$$(( $$(cat $(BUILDDIR)/.progress_count) + 1 )); \
 	echo $$PROGRESS > $(BUILDDIR)/.progress_count; \
 	rmdir $(BUILDDIR)/.progress_lock; \
@@ -156,4 +153,4 @@ re: fclean
 	@$(MAKE) all
 
 #? Non-File Targets
-.PHONY: all clean fclean re info help directories
+.PHONY: all clean fclean re info help
