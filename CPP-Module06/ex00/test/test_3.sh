@@ -1,11 +1,12 @@
 # !/bin/bash
 
-ARGS=("0" "nan" "42.0f")
+ARGS=("a" "" "aa" "test" "\\")
 PROJECT_ROOT= "../"
 TARGET="./bin/convert"
 
 echo
-echo "********** TEST 1 **********"
+echo "********** TEST 3 **********"
+echo "          Char Test         "
 echo
 
 for arg in "${ARGS[@]}"; do

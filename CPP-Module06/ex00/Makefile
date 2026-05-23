@@ -17,6 +17,12 @@ REQFLAGS		:=	-std=c++98 -pedantic
 WARNFLAGS		:=	-Wall -Wextra -Werror
 OPTFLAGS		:=
 LDFLAGS			:=
+
+#? Debug mode (DEBUG=1 enables -DDEBUG)
+ifeq ($(DEBUG),1)
+	OPTFLAGS	+=	-DDEBUG -g3 -O0
+endif
+
 CXXFLAGS		:=	$(REQFLAGS) $(WARNFLAGS) $(OPTFLAGS)
 
 #? Compiler info
@@ -60,6 +66,11 @@ OBJECTS			:=	$(patsubst $(SRCDIR)/%.$(SRCEXT),$(BUILDDIR)/%.$(OBJEXT),$(SOURCES)
 #? Test
 TESTDIR			:=	test
 TEST1			:=	$(TESTDIR)/test_1.sh
+TEST2			:=	$(TESTDIR)/test_2.sh
+TEST3			:=	$(TESTDIR)/test_3.sh
+TEST4			:=	$(TESTDIR)/test_4.sh
+TEST5			:=	$(TESTDIR)/test_5.sh
+TEST6			:=	$(TESTDIR)/test_6.sh
 
 #? Includes
 INC				:=	-I $(SRCDIR)
@@ -114,6 +125,8 @@ help:
 	@printf "  \033[1mclean\033[0m        Remove built objects\n"
 	@printf "  \033[1mfclean\033[0m       Remove built objects and binary\n"
 	@printf "  \033[1mre\033[0m           Rebuild from scratch\n"
+	@printf "  \033[1mtest\033[0m         Build and run test scripts\n"
+	@printf "  \033[1mdebug\033[0m        Rebuild with -DDEBUG and run test scripts\n"
 	@printf "  \033[1minfo\033[0m         Display build information\n"
 	@printf "  \033[1mhelp\033[0m         Show this help message\n"
 
@@ -159,8 +172,28 @@ run: re
 	@$(TARGETDIR)/$(NAME) $(filter-out $@,$(MAKECMDGOALS))
 
 test: re
-	@printf "\033[1;91mTEST $(TEST1)\033[0m\n"
+	@printf "\033[1;91mTEST\033[0m\n"
+	@make run_test
+
+debug: export DEBUG := 1
+debug: re
+	@printf "\033[1;91mDEBUG TEST\033[0m\n"
+	@make run_test
+
+run_test:
+	@chmod +x ./$(TEST1)
 	@./$(TEST1)
+	@chmod +x ./$(TEST2)
+	@./$(TEST2)
+	@chmod +x ./$(TEST3)
+	@./$(TEST3)
+	@chmod +x ./$(TEST4)
+	@./$(TEST4)
+	@chmod +x ./$(TEST5)
+	@./$(TEST5)
+	@chmod +x ./$(TEST6)
+	@./$(TEST6)
+
 
 #? Non-File Targets
-.PHONY: all clean fclean re info help run test
+.PHONY: all clean fclean re info help run test debug
