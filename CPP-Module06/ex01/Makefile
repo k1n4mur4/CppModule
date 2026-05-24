@@ -63,15 +63,6 @@ SOURCES			:=	$(SRCDIR)/main.cpp \
 
 OBJECTS			:=	$(patsubst $(SRCDIR)/%.$(SRCEXT),$(BUILDDIR)/%.$(OBJEXT),$(SOURCES))
 
-#? Test
-TESTDIR			:=	test
-TEST1			:=	$(TESTDIR)/test_1.sh
-TEST2			:=	$(TESTDIR)/test_2.sh
-TEST3			:=	$(TESTDIR)/test_3.sh
-TEST4			:=	$(TESTDIR)/test_4.sh
-TEST5			:=	$(TESTDIR)/test_5.sh
-TEST6			:=	$(TESTDIR)/test_6.sh
-
 #? Includes
 INC				:=	-I $(SRCDIR)
 
@@ -171,29 +162,5 @@ re: fclean
 run: re
 	@$(TARGETDIR)/$(NAME) $(filter-out $@,$(MAKECMDGOALS))
 
-test: re
-	@printf "\033[1;91mTEST\033[0m\n"
-	@make run_test
-
-debug: export DEBUG := 1
-debug: re
-	@printf "\033[1;91mDEBUG TEST\033[0m\n"
-	@make run_test
-
-run_test:
-	@chmod +x ./$(TEST1)
-	@./$(TEST1)
-	@chmod +x ./$(TEST2)
-	@./$(TEST2)
-	@chmod +x ./$(TEST3)
-	@./$(TEST3)
-	@chmod +x ./$(TEST4)
-	@./$(TEST4)
-	@chmod +x ./$(TEST5)
-	@./$(TEST5)
-	@chmod +x ./$(TEST6)
-	@./$(TEST6)
-
-
 #? Non-File Targets
-.PHONY: all clean fclean re info help run test debug
+.PHONY: all clean fclean re info help
