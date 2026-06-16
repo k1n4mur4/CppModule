@@ -13,9 +13,9 @@ CXX				:=	c++
 RM				:=	rm -rf
 
 #? Compiler Flags (split)
-REQFLAGS		:=	-std=c++98 -pedantic
+REQFLAGS		:=	-std=c++98
 WARNFLAGS		:=	-Wall -Wextra -Werror
-OPTFLAGS		:=
+OPTFLAGS		:=	-pedantic
 LDFLAGS			:=
 
 CXXFLAGS		:=	$(REQFLAGS) $(WARNFLAGS) $(OPTFLAGS)
