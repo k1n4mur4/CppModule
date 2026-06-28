@@ -181,7 +181,6 @@ test: re
 	@printf "\033[1;91mTEST\033[0m\n"
 	@make run
 
-
 debug: export DEBUG := 1
 debug: re
 
