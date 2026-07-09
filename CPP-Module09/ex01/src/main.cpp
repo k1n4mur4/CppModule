@@ -1,5 +1,6 @@
 #include "RPN.hpp"
 #include <iostream>
+#include <cctype>
 
 namespace Color {
 	const char *BOLD = "\033[1m";
@@ -39,7 +40,7 @@ int main(int argc, char *argv[]) {
 			// #ifdef DEBUG
 			// 	std::cout << "command:" << input[i] << std::endl;
 			// #endif
-		} else if (isdigit(input[i])) {
+		} else if (isdigit(static_cast<unsigned char>(input[i]))) {
 			int	n = input[i] - '0';
 			rpn.set_stack(n);
 			// #ifdef DEBUG

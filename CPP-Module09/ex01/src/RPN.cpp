@@ -1,5 +1,4 @@
 #include "RPN.hpp"
-#include <iostream>
 
 RPN::RPN(){}
 RPN::~RPN(){}

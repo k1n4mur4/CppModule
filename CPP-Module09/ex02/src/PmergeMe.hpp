@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
+
 # include <vector>
 # include <deque>
 # include <string>
@@ -8,6 +10,7 @@
 # include <cstdlib>
 # include <iomanip>
 # include <cctype>
+#include <stdexcept>
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
@@ -24,8 +27,8 @@ class PmergeMe
 		bool							_measuredVector;
 		bool							_measuredDeque;
 
-		void				sortVector(void);
-		void				sortDeque(void);
+		void				sortVector(int argc, char *argv[]);
+		void				sortDeque(int argc, char *argv[]);
 		int					jacobsthal(int n);
 		double				getElapsedVector(void);
 		void				setElapsedVector(double elapsed);
@@ -59,13 +62,16 @@ class PmergeMe
 template<typename T>
 T PmergeMe::lowerBound(T first, T last, int val)
 {
-while (first < last) {
-	T mid = first + (last - first) / 2;
-	if (mid->back() < val) {
-		first = mid + 1;
-	} else {
-		last = mid;
+	while (first < last) {
+		T mid = first + (last - first) / 2;
+		if (mid->back() < val) {
+			first = mid + 1;
+		} else {
+			last = mid;
+		}
 	}
+	return first;
 }
-return first;
-}
+
+#endif
+

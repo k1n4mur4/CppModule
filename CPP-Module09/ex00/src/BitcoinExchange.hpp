@@ -12,13 +12,11 @@ class BitcoinExchange {
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 
 		void	loadDatabase(const std::string& filename);
-		bool	isValidDate(const std::string date);
+		bool	isValidDate(const std::string& date);
 		double	getRate(const std::string& date) const;
 
 	private:
 		std::map<std::string, double>	_db;
 };
-
-
 
 #endif

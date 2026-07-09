@@ -2,6 +2,9 @@
 # define RPN_HPP
 
 #include <stack>
+#include <list>
+#include <iostream>
+#include <stdexcept>
 
 class RPN {
 	public:
@@ -16,7 +19,7 @@ class RPN {
 		bool	is_command(char command);
 		void	run_command(char command);
 	private:
-		std::stack<int> _stack;
+		std::stack<int, std::list<int> > _stack;
 };
 
 #endif

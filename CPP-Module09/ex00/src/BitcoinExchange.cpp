@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 
 BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::~BitcoinExchange() {}
@@ -70,7 +71,7 @@ double	BitcoinExchange::getRate(const std::string& date) const {
 
 }
 
-bool	BitcoinExchange::isValidDate(const std::string date) {
+bool	BitcoinExchange::isValidDate(const std::string& date) {
 
 	if (date.length() != 10)
 		return false;
@@ -98,7 +99,12 @@ bool	BitcoinExchange::isValidDate(const std::string date) {
 
 	if (month < 1 || month > 12)
 		return false;
-	if (day < 1 || day > 31)
+
+	static const int	daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int	maxDay = daysInMonth[month - 1];
+	if (month == 2 && year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+		maxDay = 29;
+	if (day < 1 || day > maxDay)
 		return false;
 	return true;
 }

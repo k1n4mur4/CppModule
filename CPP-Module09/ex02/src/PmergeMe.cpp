@@ -199,15 +199,17 @@ std::deque<std::deque<int> >	PmergeMe::mergeInsertDeque(std::deque<std::deque<in
 	return (ans);
 }
 
-void	PmergeMe::sortVector(void) {
+void	PmergeMe::sortVector(int argc, char *argv[]) {
 	clock_t	start = clock();
+	parseVector(argc, argv);
 	_ans_vec = mergeInsertVector(_vec);
 	clock_t	end = clock();
 	setElapsedVector(double(end - start) / CLOCKS_PER_SEC * 1000);
 }
 
-void	PmergeMe::sortDeque(void) {
+void	PmergeMe::sortDeque(int argc, char *argv[]) {
 	clock_t	start = clock();
+	parseDeque(argc, argv);
 	_ans_deq = mergeInsertDeque(_deq);
 	clock_t	end = clock();
 	setElapsedDeque(double(end - start) / CLOCKS_PER_SEC * 1000);
@@ -293,15 +295,11 @@ void	PmergeMe::printDeque(std::string msg) {
 }
 
 void	PmergeMe::sortAll(int argc, char *argv[]) {
-	parseVector(argc, argv);
-	parseDeque(argc, argv);
+	sortVector(argc, argv);
+	sortDeque(argc, argv);
 	printVector("Before:");
 	#if DEBUG
 		printDeque("Before:");
-	#endif
-	sortVector();
-	sortDeque();
-	#if DEBUG
 		printVector("After:");
 	#endif
 	printDeque("After:");
